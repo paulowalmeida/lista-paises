@@ -6,7 +6,7 @@ import list from "./components/list/list";
 import info from "./components/info/info";
 import * as axios from "axios";
 
-export default class App extends Component {
+class App extends Component {
     constructor() {
         super();
 
@@ -85,3 +85,5 @@ export default class App extends Component {
         )
     }
 }
+
+export default App;
