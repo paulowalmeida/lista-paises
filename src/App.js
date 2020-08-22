@@ -2,17 +2,18 @@ import React, {Component} from 'react';
 import './App.css';
 
 import Header from "./Components/header/Header";
-import Filter from "./Components/filter/Filter";
 import List from "./Components/list/List";
 import Info from "./Components/info/Info";
 import * as axios from "axios";
+import Loader from "./Components/loader/Loader";
+import Footer from "./Components/footer/Footer";
 
 class App extends Component {
     constructor() {
         super();
 
         this.state = {
-            allCountries:[],
+            allCountries: [],
             filteredCountries: [],
             totalCountries: 0,
             totalPopulation: 0,
@@ -22,12 +23,11 @@ class App extends Component {
     async componentDidMount() {
         const allCountries = await this.getData();
         this.setState({
-            allCountries: Object.assign([],allCountries),
-            filteredCountries: Object.assign([],allCountries),
+            allCountries: Object.assign([], allCountries),
+            filteredCountries: Object.assign([], allCountries),
             totalCountries: allCountries.length,
             totalPopulation: this.handleTotalPopulation(allCountries),
         });
-        await this.props.showPreloader(false);
     }
 
     getData = async () => {
@@ -71,19 +71,22 @@ class App extends Component {
     render() {
         const {totalCountries, totalPopulation, filteredCountries} = this.state;
         const placeholder = 'Digite o nome do país que deseja pesquisar';
+
         return (
             <div className="container">
                 <Header text='Lista de Países'/>
-                <div className="containerInfo">
-                    <Filter placeholder={placeholder} handleChangeFilter={this.handleChangeFilter}/>
-                    <Info values={{totalCountries, totalPopulation}}/>
-                </div>
-                <List allCountries={filteredCountries}/>
-                <footer style={{color: '#CFD8DC', textAlign: 'center', padding: '10px', marginBottom: '20px'}}>
-                    © 2020 P.W. Neo
-                </footer>
+                <Info values={{totalCountries, totalPopulation, placeholder, onInputValue: this.handleChangeFilter}}/>
+                {
+                    filteredCountries.length === 0
+                        ? <Loader/>
+                        : <>
+                            <List allCountries={filteredCountries}/>
+                            <Footer/>
+                        </>
+                }
             </div>
         )
     }
 }
+
 export default App;
