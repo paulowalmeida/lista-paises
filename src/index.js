@@ -2,16 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+
+const showPreloader = (value) => {
+    if (value){
+        document.getElementById('root').style.display = 'none';
+        document.getElementById('loading').style.display = 'block';
+    }
+    else {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('root').style.display = 'block';
+    }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <App showPreloader={showPreloader}/>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
