@@ -4,7 +4,7 @@ import {Header} from "./components/header/Header";
 import {Filter} from "./components/filter/Filter";
 import {List} from "./components/list/List";
 import {Info} from "./components/info/Info";
-import {getData} from "./database/Database.js";
+import * as axios from "axios";
 
 export default class App extends Component {
     constructor() {
@@ -19,7 +19,7 @@ export default class App extends Component {
     }
 
     async componentDidMount() {
-        const allCountries = await getData();
+        const allCountries = await this.getData();
         this.setState({
             allCountries: Object.assign([],allCountries),
             filteredCountries: Object.assign([],allCountries),
@@ -27,6 +27,24 @@ export default class App extends Component {
             totalPopulation: this.handleTotalPopulation(allCountries),
         });
         await this.props.showPreloader(false);
+    }
+
+    getData = async () => {
+        const {data} = await axios.get('https://restcountries.eu/rest/v2/all');
+        return await data.map(({numericCode, name, capital, flag, population, region, languages, regionalBlocs, callingCodes}) => {
+            return {
+                id: numericCode,
+                name,
+                filterName: name.toLowerCase(),
+                population,
+                flag,
+                capital: (capital === '' ? 'No Capital' : capital),
+                region,
+                languages,
+                regionalBlocs: (regionalBlocs.length === 0 ? [{name: 'No Blocs'}] : regionalBlocs),
+                callingCodes
+            };
+        })
     }
 
     handleTotalPopulation = (listCountries) => {
