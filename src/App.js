@@ -4,7 +4,7 @@ import {Header} from "./components/header/Header";
 import {Filter} from "./components/filter/Filter";
 import {List} from "./components/list/List";
 import {Info} from "./components/info/Info";
-import {getData} from "./database/Database";
+import {getData} from "./database/Database.js";
 
 export default class App extends Component {
     constructor() {
