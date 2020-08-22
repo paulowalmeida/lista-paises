@@ -21,7 +21,6 @@ class App extends Component {
 
     async componentDidMount() {
         const allCountries = await this.getData();
-        console.log(allCountries);
         this.setState({
             allCountries: Object.assign([],allCountries),
             filteredCountries: Object.assign([],allCountries),
