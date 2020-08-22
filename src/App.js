@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import {Header} from "./components/header/Header";
-import {Filter} from "./components/filter/Filter";
-import {List} from "./components/list/List";
-import {Info} from "./components/info/Info";
+import {header} from "./components/header/header";
+import {filter} from "./components/filter/filter";
+import {list} from "./components/list/list";
+import {info} from "./components/info/info";
 import * as axios from "axios";
 
 export default class App extends Component {
@@ -72,12 +72,12 @@ export default class App extends Component {
         const placeholder = 'Digite o nome do país que deseja pesquisar';
         return (
             <div className="container">
-                <Header text='Lista de Países'/>
+                <header text='Lista de Países'/>
                 <div className="containerInfo">
-                    <Filter placeholder={placeholder} handleChangeFilter={this.handleChangeFilter}/>
-                    <Info values={{totalCountries, totalPopulation}}/>
+                    <filter placeholder={placeholder} handleChangeFilter={this.handleChangeFilter}/>
+                    <info values={{totalCountries, totalPopulation}}/>
                 </div>
-                <List allCountries={filteredCountries}/>
+                <list allCountries={filteredCountries}/>
                 <footer style={{color: '#CFD8DC', textAlign: 'center', padding: '10px', marginBottom: '20px'}}>
                     © 2020 P.W. Neo
                 </footer>
