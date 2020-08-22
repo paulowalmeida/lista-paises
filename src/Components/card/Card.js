@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import css from './card.module.css';
+import css from './Card.module.css';
 import {formatNumber} from "../../helpers/helpers";
 import M from "materialize-css";
 import "materialize-css/dist/css/materialize.min.css";
 
-export default class card extends Component {
+class Card extends Component {
     componentDidMount() {
         M.Modal.init(this.Modal);
     }
@@ -70,3 +70,5 @@ export default class card extends Component {
         );
     }
 }
+
+export default Card;

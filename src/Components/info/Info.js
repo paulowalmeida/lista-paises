@@ -1,8 +1,8 @@
 import React from 'react';
-import './info.module.css';
+import './Info.module.css';
 import {formatNumber} from "../../helpers/helpers.js";
 
-function info({values:{totalCountries, totalPopulation}}) {
+function Info({values:{totalCountries, totalPopulation}}) {
     return (
         <div>
             <p>Países: {totalCountries}</p>
@@ -10,4 +10,4 @@ function info({values:{totalCountries, totalPopulation}}) {
         </div>
     );
 }
-export default info;
+export default Info;

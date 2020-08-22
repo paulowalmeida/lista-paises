@@ -1,7 +1,7 @@
 import React from 'react';
-import card from "../card/card";
+import Card from "../card/Card";
 
-function list({allCountries}) {
+function List({allCountries}) {
     console.log()
     return (
         <div className="row">
@@ -10,7 +10,7 @@ function list({allCountries}) {
                     {allCountries.map(({id, name, capital, flag, population, region, languages, regionalBlocs, callingCodes}) => {
                         return (
                             <li key={parseInt(id)}>
-                                <card info={{id, name, capital, flag, population, region, languages, regionalBlocs, callingCodes}}/>
+                                <Card info={{id, name, capital, flag, population, region, languages, regionalBlocs, callingCodes}}/>
                             </li>
                         )
                     })}
@@ -20,4 +20,4 @@ function list({allCountries}) {
     );
 }
 
-export default list;
+export default List;

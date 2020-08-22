@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import './App.css';
-import header from "./Components/header/header";
-import filter from "./Components/filter/filter";
-import list from "./Components/list/list";
-import info from "./Components/info/info";
+
+import Header from "./Components/header/Header";
+import Filter from "./Components/filter/Filter";
+import List from "./Components/list/List";
+import Info from "./Components/info/Info";
 import * as axios from "axios";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
 
     async componentDidMount() {
         const allCountries = await this.getData();
+        console.log(allCountries);
         this.setState({
             allCountries: Object.assign([],allCountries),
             filteredCountries: Object.assign([],allCountries),
@@ -72,12 +74,12 @@ class App extends Component {
         const placeholder = 'Digite o nome do país que deseja pesquisar';
         return (
             <div className="container">
-                <header text='Lista de Países'/>
+                <Header text='Lista de Países'/>
                 <div className="containerInfo">
-                    <filter placeholder={placeholder} handleChangeFilter={this.handleChangeFilter}/>
-                    <info values={{totalCountries, totalPopulation}}/>
+                    <Filter placeholder={placeholder} handleChangeFilter={this.handleChangeFilter}/>
+                    <Info values={{totalCountries, totalPopulation}}/>
                 </div>
-                <list allCountries={filteredCountries}/>
+                <List allCountries={filteredCountries}/>
                 <footer style={{color: '#CFD8DC', textAlign: 'center', padding: '10px', marginBottom: '20px'}}>
                     © 2020 P.W. Neo
                 </footer>

@@ -1,10 +1,10 @@
 import React from 'react';
-import css from './header.module.css';
+import css from './Header.module.css';
 
-function header({text}) {
+function Header({text}) {
     return (
         <h1 className={css.header}>{text}</h1>
     );
 }
 
-export default header;
+export default Header;

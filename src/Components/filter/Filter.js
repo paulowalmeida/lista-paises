@@ -1,7 +1,7 @@
 import React from 'react';
-import css from './filter.module.css';
+import css from './Filter.module.css';
 
-function filter({placeholder, filter, handleChangeFilter}) {
+function Filter({placeholder, filter, handleChangeFilter}) {
     const handleInputChange = ({target: {value}}) => {
         handleChangeFilter(value);
     }
@@ -15,4 +15,4 @@ function filter({placeholder, filter, handleChangeFilter}) {
     );
 }
 
-export default  filter;
+export default Filter;
