@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import './App.css';
-import {header} from "./components/header/header.js";
-import {filter} from "./components/filter/filter.js";
-import {list} from "./components/list/list.js";
-import {info} from "./components/info/info.js";
+import header from "./components/header/header";
+import filter from "./components/filter/filter";
+import list from "./components/list/list";
+import info from "./components/info/info";
 import * as axios from "axios";
 
 export default class App extends Component {
